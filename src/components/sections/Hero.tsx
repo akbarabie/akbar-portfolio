@@ -24,7 +24,7 @@ export function Hero() {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" asChild>
-                <a href="#projects">View Projects</a>
+                <a href="projects">View Projects</a>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <a href="/cv/cv_mas.pdf" download>
