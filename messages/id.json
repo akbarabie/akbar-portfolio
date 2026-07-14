@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "projects": "Proyek",
+    "blog": "Blog",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "tagline": "Menjembatani 7+ tahun pengalaman IT enterprise dengan data science dan AI engineering modern.",
+    "viewProjects": "Lihat Proyek",
+    "downloadCv": "Unduh CV"
+  },
+  "footer": {
+    "rights": "Seluruh hak cipta dilindungi.",
+    "builtWith": "Dibangun dengan Next.js & Tailwind CSS."
+  },
+  "metadata": {
+    "description": "Portfolio profesional — Data Analyst, Data Science, Machine Learning, dan AI Engineering."
+  },
+  "about": {
+    "bio": "Profesional data dengan 7+ tahun pengalaman di sektor perbankan dan enterprise, kini  memperdalam Machine Learning dan AI Engineering melalui program intensif Hacktiv8. Berpengalaman membangun sistem end-to-end — dari otomasi pajak untuk 15.000+ karyawan hingga model klasifikasi risiko investor untuk kepatuhan regulasi.",
+    "education": {
+      "title": "Pendidikan",
+      "s2": "Magister Manajemen — Universitas Airlangga (2020–2022), IPK 3.64/4.00",
+      "s1": "Sarjana Teknik Komputer — Universitas Dinamika (2015–2019), IPK 3.81/4.00"
+    },
+    "stats": {
+      "experience": { "value": "7+ Tahun", "label": "Pengalaman IT & Data" },
+      "employees": { "value": "15.000+", "label": "Karyawan Terdampak" },
+      "efficiency": { "value": "97%", "label": "Efisiensi Proses" },
+      "portfolio": { "value": "IDR 350M", "label": "Portofolio Dikelola" }
+    },
+    "title": "Tentang Saya",
+      "techStackTitle": "Tumpuan Teknologi Utama",
+      "projectsTitle": "Proyek Unggulan",
+      "projects": {
+        "da": "Analisis statistik & dashboard Golden Hour dari 50.000+ transaksi penjualan pizza",
+        "ds": "Klasifikasi risiko investor 4-kelas, zero misklasifikasi risiko tinggi, deployed di Hugging Face Spaces",
+        "de": "Integrasi & migrasi data MySQL ke dashboard pelaporan otomatis, reduksi 70% waktu manual"
+    }
+},
+"skills": {
+  "title": "Keahlian & Teknologi",
+  "categories": {
+    "programming": "Pemrograman",
+    "machineLearning": "Machine Learning",
+    "data": "Data",
+    "deployment": "Deployment"
+  },
+  "comingSoon": "Segera Hadir"
+},
+  "projects": {
+    "title": "Proyek",
+    "subtitle": "Proyek data end-to-end mencakup analisis, machine learning, dan engineering.",
+    "metaTitle": "Proyek — Muhammad Akbar Suharbi",
+    "metaDescription": "Kumpulan proyek data analytics, data science, dan data engineering.",
+    "viewOnGithub": "Lihat di GitHub",
+    "viewLiveDemo": "Lihat Live Demo",
+    "categories": {
+      "data-analyst": "Data Analyst",
+      "data-scientist": "Data Scientist",
+      "data-engineer": "Data Engineer"
+    },
+    "sections": {
+      "businessProblem": "Masalah Bisnis",
+      "classDefinition": "Kelas Risiko",
+      "dataset": "Dataset",
+      "methodology": "Metodologi",
+      "featureEngineering": "Feature Engineering",
+      "modelDevelopment": "Pengembangan Model",
+      "modelEvaluation": "Evaluasi Model",
+      "architecture": "Arsitektur",
+      "deployment": "Deployment",
+      "impact": "Dampak"
+    }
+  },
+  "contact": {
+    "title": "Mari Terhubung",
+    "subtitle": "Terbuka untuk peluang karier, kolaborasi, dan diskusi yang bermakna seputar AI, data, dan teknologi. Hubungi saya.",
+    "chatWhatsapp": "Chat via WhatsApp",
+    "form": {
+      "nameLabel": "Nama",
+      "emailLabel": "Email",
+      "messageLabel": "Pesan",
+      "submit": "Kirim Pesan",
+      "sending": "Mengirim...",
+      "successMessage": "Terima kasih! Saya akan segera membalas."
+    }
+  }
+}

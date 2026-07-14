@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--color-background);
+  --color-card: var(--color-card);
+  --color-foreground: var(--color-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-text-muted: var(--color-text-muted);
+  --color-border: var(--color-border);
+}
+
+/* Light (default) */
+:root {
+  --color-background: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-foreground: #0F172A;
+  --color-accent: #3B82F6;
+  --color-toggle-track: var(--color-card);
+  --color-toggle-thumb-from: #FFFFFF;
+  --color-toggle-thumb-to: #E2E8F0;
+  --color-toggle-border: #CBD5E1;
+  --color-toggle-off: #DC2626;
+  --color-toggle-on: #16A34A;
+  --color-text-muted: #272e37;
+  --color-border: #ebeff4;
+  --color-accent-foreground: #FFFFFF;
+  color-scheme: light;
+}
+
+/* Dark */
+html.dark {
+  --color-background: #0F172A;
+  --color-card: #1E293B;
+  --color-foreground: #F8FAFC;
+  --color-accent: #3B82F6;
+  --color-toggle-track: #252532;
+  --color-toggle-thumb-from: #3b3a4e;
+  --color-toggle-thumb-to: #272733;
+  --color-toggle-border: #32303e;
+  --color-toggle-off: #ef565f;
+  --color-toggle-on: #60d480;
+  --color-text-muted: #c6cfdc;
+  --color-border: #141b27;
+  --color-accent-foreground: #FFFFFF; 
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+/* Dark Mode Toggle Switch — from Uiverse.io by Admin12121 */
+.switch-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+}
+.switch-button .switch-outer {
+  height: 100%;
+  background: var(--color-toggle-track);
+  width: 75px;
+  border-radius: 165px;
+  box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.35),
+    0px 3px 6px -2px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-toggle-border);
+  padding: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.switch-button .switch-outer input[type="checkbox"] {
+  opacity: 0;
+  appearance: none;
+  position: absolute;
+}
+.switch-button .switch-outer .button-toggle {
+  height: 27px;
+  width: 27px;
+  background: linear-gradient(var(--color-toggle-thumb-from), var(--color-toggle-thumb-to));
+  border-radius: 100%;
+  box-shadow: inset 0px 5px 4px 0px rgba(255, 255, 255, 0.15),
+    0px 4px 15px 0px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  transition: left 0.3s ease-in, background 0.3s ease;
+  left: 0;
+}
+.switch-button .switch-outer input[type="checkbox"]:checked + .button .button-toggle {
+  left: 58%;
+}
+.switch-button .switch-outer input[type="checkbox"]:checked + .button .button-indicator {
+  animation: indicator 1s forwards;
+}
+.switch-button .switch-outer .button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.switch-button .switch-outer .button-indicator {
+  height: 16px;
+  width: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 2px solid var(--color-toggle-off);
+  box-sizing: border-box;
+  right: 7px;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+@keyframes indicator {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    border-color: var(--color-toggle-on);
+    left: -68%;
+  }
+}
+
+.graph-edge {
+  stroke: var(--color-accent);
+  opacity: 0.1;
+}
+.dark .graph-edge {
+  stroke: #ffffff;
+  opacity: 0.05;
+}
+
+.graph-node {
+  fill: var(--color-accent);
+  opacity: 0.15;
+}
+.dark .graph-node {
+  fill: #ffffff;
+  opacity: 0.15;
+}
+
+.graph-signal {
+  fill: var(--color-accent);
+}
+.dark .graph-signal {
+  fill: #ffffff;
+}
+

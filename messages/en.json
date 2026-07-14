@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Bridging 7+ years of enterprise IT experience with modern data science and AI engineering.",
+    "viewProjects": "View Projects",
+    "downloadCv": "Download CV"
+  },
+  "metadata": {
+    "description": "Professional portfolio — Data Analyst, Data Science, Machine Learning, and AI Engineering."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Next.js & Tailwind CSS."
+  },
+  "about": {
+    "bio": "A data professional with 7+ years of experience across banking and enterprise sectors, now deepening expertise in Machine Learning and AI Engineering through Hacktiv8's intensive program. Experienced in building end-to-end systems — from tax automation serving 15,000+ employees to investor risk classification models for regulatory compliance.",
+    "education": {
+      "title": "Education",
+      "s2": "Master of Management — Universitas Airlangga (2020–2022), GPA 3.64/4.00",
+      "s1": "Bachelor of Computer Engineering — Universitas Dinamika (2015–2019), GPA 3.81/4.00"
+    },
+    "stats": {
+      "experience": { "value": "5+ Years", "label": "IT & Data Experience" },
+      "employees": { "value": "15,000+", "label": "Employees Impacted" },
+      "efficiency": { "value": "97%", "label": "Processing Time Reduction" },
+      "portfolio": { "value": "IDR 350M", "label": "Portfolio Managed" }
+    },
+    "title": "About Me",
+    "techStackTitle": "Core Tech Stack",
+    "projectsTitle": "Featured Projects",
+    "projects": {
+      "da": "Statistical analysis & Golden Hour dashboard from 50,000+ pizza sales transactions",
+      "ds": "4-class investor risk classifier, zero high-risk misclassification, deployed on Hugging Face Spaces",
+      "de": "MySQL data integration & migration into automated reporting dashboard, 70% reduction in manual time"
+    }
+  },
+  "skills": {
+    "title": "Skills & Technology",
+    "categories": {
+      "programming": "Programming",
+      "machineLearning": "Machine Learning",
+      "data": "Data",
+      "deployment": "Deployment"
+    },
+    "comingSoon": "Coming Soon"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "End-to-end data projects spanning analysis, machine learning, and engineering.",
+    "metaTitle": "Projects — Muhammad Akbar Suharbi",
+    "metaDescription": "A selection of data analytics, data science, and data engineering projects.",
+    "viewOnGithub": "View on GitHub",
+    "viewLiveDemo": "View Live Demo",
+    "categories": {
+      "data-analyst": "Data Analyst",
+      "data-scientist": "Data Scientist",
+      "data-engineer": "Data Engineer"
+    },
+    "sections": {
+      "businessProblem": "Business Problem",
+      "classDefinition": "Risk Classes",
+      "dataset": "Dataset",
+      "methodology": "Methodology",
+      "featureEngineering": "Feature Engineering",
+      "modelDevelopment": "Model Development",
+      "modelEvaluation": "Model Evaluation",
+      "architecture": "Architecture",
+      "deployment": "Deployment",
+      "impact": "Impact"
+    }
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "subtitle": "Open to opportunities, collaborations, and meaningful conversations about AI, data, and technology. Contact me.",
+    "chatWhatsapp": "Chat via WhatsApp",
+    "form": {
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "messageLabel": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "successMessage": "Thanks! I'll get back to you soon."
+    }
+  }
+}
