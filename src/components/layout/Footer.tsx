@@ -1,6 +1,6 @@
 // src/components/layout/Footer.tsx
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { WhatsappIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 import { siteConfig } from "@/data/site-config";
@@ -18,12 +18,13 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-border/60">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-text-muted sm:flex-row">
-        <p className="font-mono">
-          &copy; {year} {siteConfig.name}. {t("rights")}
-        </p>
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 text-sm text-text-muted sm:grid sm:grid-cols-3 sm:items-center">
+        <div className="inline-flex items-center gap-1.5 font-mono sm:justify-self-start">
+          <MapPin size={13} className="shrink-0" />
+          {siteConfig.location}
+        </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 sm:justify-self-center">
           {socials.map(({ label, href, icon: Icon }) => (
             <Link
               key={label}
@@ -37,7 +38,11 @@ export async function Footer() {
             </Link>
           ))}
         </div>
-        <p className="font-mono">{t("builtWith")}</p>
+
+        <div className="text-center font-mono leading-relaxed sm:justify-self-end sm:text-right">
+          <p>&copy; {year} {siteConfig.name}.</p>
+          <p>{t("rights")}</p>
+        </div>
       </div>
     </footer>
   );

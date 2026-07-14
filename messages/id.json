@@ -7,63 +7,74 @@
     "contact": "Kontak"
   },
   "hero": {
-    "tagline": "Menjembatani 7+ tahun pengalaman IT enterprise dengan data science dan AI engineering modern.",
+    "tagline": "Mengubah 7+ tahun pengalaman IT enterprise menjadi solusi modern berbasis Data Science dan AI Engineering.",
     "viewProjects": "Lihat Proyek",
     "downloadCv": "Unduh CV"
   },
-  "footer": {
-    "rights": "Seluruh hak cipta dilindungi.",
-    "builtWith": "Dibangun dengan Next.js & Tailwind CSS."
-  },
   "metadata": {
-    "description": "Portfolio profesional — Data Analyst, Data Science, Machine Learning, dan AI Engineering."
+    "description": "Portfolio profesional yang menampilkan proyek AI, Machine Learning, Data Engineering, Data Analytics, dan Software Engineering."
+  },
+  "footer": {
+    "rights": "Seluruh hak cipta dilindungi."
   },
   "about": {
-    "bio": "Profesional data dengan 7+ tahun pengalaman di sektor perbankan dan enterprise, kini  memperdalam Machine Learning dan AI Engineering melalui program intensif Hacktiv8. Berpengalaman membangun sistem end-to-end — dari otomasi pajak untuk 15.000+ karyawan hingga model klasifikasi risiko investor untuk kepatuhan regulasi.",
+    "bio": "Profesional data dengan pengalaman lebih dari 7 tahun di sektor perbankan dan enterprise, yang kini berfokus pada AI Engineering, Machine Learning, dan Data Engineering setelah menyelesaikan program bootcamp Hacktiv8. Berpengalaman membangun solusi end-to-end, mulai dari otomasi perpajakan yang digunakan oleh lebih dari 15.000 karyawan hingga model klasifikasi risiko investor untuk mendukung kepatuhan regulasi.",
     "education": {
       "title": "Pendidikan",
       "s2": "Magister Manajemen — Universitas Airlangga (2020–2022), IPK 3.64/4.00",
       "s1": "Sarjana Teknik Komputer — Universitas Dinamika (2015–2019), IPK 3.81/4.00"
     },
     "stats": {
-      "experience": { "value": "7+ Tahun", "label": "Pengalaman IT & Data" },
-      "employees": { "value": "15.000+", "label": "Karyawan Terdampak" },
-      "efficiency": { "value": "97%", "label": "Efisiensi Proses" },
-      "portfolio": { "value": "IDR 350M", "label": "Portofolio Dikelola" }
+      "experience": {
+        "value": "7+ Tahun",
+        "label": "Pengalaman IT & Data"
+      },
+      "employees": {
+        "value": "15.000+",
+        "label": "Karyawan Terdampak"
+      },
+      "efficiency": {
+        "value": "97%",
+        "label": "Pengurangan Waktu Proses"
+      },
+      "portfolio": {
+        "value": "IDR 350M",
+        "label": "Portofolio yang Dikelola"
+      }
     },
     "title": "Tentang Saya",
-      "techStackTitle": "Tumpuan Teknologi Utama",
-      "projectsTitle": "Proyek Unggulan",
-      "projects": {
-        "da": "Analisis statistik & dashboard Golden Hour dari 50.000+ transaksi penjualan pizza",
-        "ds": "Klasifikasi risiko investor 4-kelas, zero misklasifikasi risiko tinggi, deployed di Hugging Face Spaces",
-        "de": "Integrasi & migrasi data MySQL ke dashboard pelaporan otomatis, reduksi 70% waktu manual"
+    "techStackTitle": "Teknologi Inti",
+    "projectsTitle": "Proyek Unggulan",
+    "projects": {
+      "da": "Analisis statistik dan dashboard interaktif dari lebih dari 50.000 transaksi penjualan pizza",
+      "ds": "Model klasifikasi risiko investor 4 kelas tanpa kesalahan klasifikasi pada kategori risiko tinggi, dideploy di Hugging Face Spaces",
+      "de": "Integrasi dan migrasi data MySQL ke dashboard pelaporan otomatis dengan pengurangan waktu kerja manual hingga 70%"
     }
-},
-"skills": {
-  "title": "Keahlian & Teknologi",
-  "categories": {
-    "programming": "Pemrograman",
-    "machineLearning": "Machine Learning",
-    "data": "Data",
-    "deployment": "Deployment"
   },
-  "comingSoon": "Segera Hadir"
-},
+  "skills": {
+    "title": "Keahlian & Teknologi",
+    "categories": {
+      "programming": "Pemrograman",
+      "machineLearning": "Machine Learning",
+      "data": "Data",
+      "deployment": "Deployment"
+    },
+    "comingSoon": "Segera Hadir"
+  },
   "projects": {
     "title": "Proyek",
-    "subtitle": "Proyek data end-to-end mencakup analisis, machine learning, dan engineering.",
+    "subtitle": "Proyek nyata yang mencakup Data Analytics, Machine Learning, AI Engineering, dan Data Engineering.",
     "metaTitle": "Proyek — Muhammad Akbar Suharbi",
-    "metaDescription": "Kumpulan proyek data analytics, data science, dan data engineering.",
+    "metaDescription": "Kumpulan proyek Data Analytics, Data Science, dan Data Engineering.",
     "viewOnGithub": "Lihat di GitHub",
-    "viewLiveDemo": "Lihat Live Demo",
+    "viewLiveDemo": "Lihat Demo",
     "categories": {
       "data-analyst": "Data Analyst",
       "data-scientist": "Data Scientist",
       "data-engineer": "Data Engineer"
     },
     "sections": {
-      "businessProblem": "Masalah Bisnis",
+      "businessProblem": "Permasalahan Bisnis",
       "classDefinition": "Kelas Risiko",
       "dataset": "Dataset",
       "methodology": "Metodologi",
@@ -77,7 +88,7 @@
   },
   "contact": {
     "title": "Mari Terhubung",
-    "subtitle": "Terbuka untuk peluang karier, kolaborasi, dan diskusi yang bermakna seputar AI, data, dan teknologi. Hubungi saya.",
+    "subtitle": "Terbuka untuk peluang karier, kolaborasi, dan diskusi seputar AI, data, dan teknologi.",
     "chatWhatsapp": "Chat via WhatsApp",
     "form": {
       "nameLabel": "Nama",
@@ -85,7 +96,43 @@
       "messageLabel": "Pesan",
       "submit": "Kirim Pesan",
       "sending": "Mengirim...",
-      "successMessage": "Terima kasih! Saya akan segera membalas."
+      "successMessage": "Terima kasih! Saya akan segera menghubungi Anda kembali."
+    }
+  },
+  "timeline": {
+    "title": "Perjalanan Saya",
+    "subtitle": "Dari fondasi teknik hingga bertransformasi menjadi profesional Data & AI.",
+    "items": {
+      "education-bachelor": {
+        "period": "2015 – 2019",
+        "title": "Sarjana Teknik Komputer",
+        "description": "Membangun fondasi teknis yang kuat serta pola pikir yang sistematis dalam menyelesaikan permasalahan."
+      },
+      "career-foundation": {
+        "period": "2019 – 2021",
+        "title": "Full Stack Developer & IT Support",
+        "description": "Mengembangkan sistem produksi yang digunakan oleh lebih dari 15.000 karyawan di seluruh Indonesia, mulai dari otomasi perpajakan hingga sistem absensi berbasis GPS."
+      },
+      "education-master": {
+        "period": "2020 – 2022",
+        "title": "Magister Manajemen Bisnis",
+        "description": "Menggabungkan kemampuan teknis dengan wawasan bisnis untuk menerjemahkan data menjadi keputusan strategis."
+      },
+      "career-enterprise": {
+        "period": "2021 – 2026",
+        "title": "IT Staff, PT Bank Rakyat Indonesia",
+        "description": "Mengelola data dan infrastruktur berskala enterprise selama lima tahun serta mengubah data operasional menjadi insight yang mendukung pengambilan keputusan bisnis."
+      },
+      "pivot-hacktiv8": {
+        "period": "Mei – Jul 2026",
+        "title": "Bootcamp Data Science & AI/ML, Hacktiv8 Indonesia",
+        "description": "Menyelesaikan program bootcamp Data Science dan AI dengan pengalaman praktik langsung dalam machine learning, neural network, serta pengembangan solusi data end-to-end."
+      },
+      "portfolio-now": {
+        "period": "2026 – Sekarang",
+        "title": "Membangun Secara Terbuka",
+        "description": "Mengembangkan solusi AI dan data yang siap digunakan untuk membantu menyelesaikan permasalahan bisnis di dunia nyata."
+      }
     }
   }
 }

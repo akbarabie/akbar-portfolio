@@ -15,17 +15,17 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Python", highlight: true },
       { name: "SQL", highlight: true },
-      { name: "JavaScript" },
-      { name: "Golang", comingSoon: true },
+      { name: "C Language (C#, C/C++)" },
+      { name: "Golang", comingSoon: false },
     ],
   },
   {
     key: "machineLearning",
     skills: [
-      { name: "Scikit-learn", highlight: true },
-      { name: "XGBoost" },
-      { name: "PyTorch", highlight: true },
+      { name: "Scikit-learn" },
       { name: "TensorFlow", highlight: true },
+      { name: "CNN", highlight: true },
+      { name: "NLP", highlight: true },
     ],
   },
   {
@@ -43,7 +43,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Docker" },
       { name: "FastAPI", highlight: true },
       { name: "Vercel" },
-      { name: "Render" },
+      { name: "Streamlit" },
     ],
   },
 ];

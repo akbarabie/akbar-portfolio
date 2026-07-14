@@ -41,8 +41,8 @@ export const siteConfig = {
   title: "Muhammad Akbar Suharbi | Data & AI Professional",
   role: ["Data Analyst", "Data Scientist", "Data Engineer"],
   location: "Jakarta, Indonesia",
-  siteUrl: "https://your-project.vercel.app", // TODO: ganti setelah deploy Vercel pertama
-  tagline: "Bridging 7+ years of enterprise IT experience with modern data science and AI engineering.",
+  siteUrl: "https://akbar-portfolio-topaz.vercel.app/", // TODO: ganti setelah deploy Vercel pertama
+  tagline: "Transforming 7+ years of enterprise IT experience with modern Data Science and AI Engineering.",
 
   navItems: [
     { href: "/#home", key: "home" },
