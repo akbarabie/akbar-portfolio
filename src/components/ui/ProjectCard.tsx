@@ -12,7 +12,9 @@ import {
 import { Badge } from "@/components/ui/Badge";
 import { ProjectCoverPlaceholder } from "@/components/ui/ProjectCoverPlaceholder";
 import { publicAssetExists } from "@/lib/asset-exists";
+import { getLocalizedTagline } from "@/lib/localized-project";
 import type { Project } from "@/types/project";
+import { getLocale } from "next-intl/server";
 
 interface ProjectCardProps {
   project: Project;
@@ -20,7 +22,9 @@ interface ProjectCardProps {
 
 export async function ProjectCard({ project }: ProjectCardProps) {
   const t = await getTranslations("projects");
+  const locale = await getLocale();
   const hasCover = publicAssetExists(project.assets.cover);
+  const tagline = getLocalizedTagline(project, locale);
 
   return (
     <Link href={`/projects/${project.slug}`} className="block h-full">
@@ -36,7 +40,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
         <CardHeader>
           <Badge className="w-fit">{t(`categories.${project.category}`)}</Badge>
           <CardTitle>{project.title}</CardTitle>
-          <CardDescription>{project.tagline}</CardDescription>
+          <CardDescription>{tagline}</CardDescription>
         </CardHeader>
 
         <CardContent className="mt-auto flex flex-wrap gap-x-3 gap-y-1">

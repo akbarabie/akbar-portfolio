@@ -10,6 +10,7 @@ export type ProjectCategory = "data-analyst" | "data-scientist" | "data-engineer
 export type SectionKey =
   | "businessProblem"
   | "classDefinition"
+  | "categories"
   | "dataset"
   | "methodology"
   | "featureEngineering"
@@ -23,6 +24,7 @@ export interface ProjectSection {
   key: SectionKey;
   // 1 elemen -> dirender sebagai paragraf. >1 elemen -> dirender sebagai bullet list.
   content: string[];
+  contentId?: string[]; // versi bahasa Indonesia dari content, optional
 }
 
 export interface ProjectLinks {
@@ -42,6 +44,7 @@ export interface Project {
   category: ProjectCategory;
   year: string;
   tagline: string; // one-liner buat card di homepage
+  taglineId?: string; // versi bahasa Indonesia dari tagline, optional
   techStack: string[];
   links: ProjectLinks;
   assets: ProjectAssets;

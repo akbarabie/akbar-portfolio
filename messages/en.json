@@ -64,6 +64,7 @@
     "sections": {
       "businessProblem": "Business Problem",
       "classDefinition": "Risk Classes",
+      "categories": "Categories",
       "dataset": "Dataset",
       "methodology": "Methodology",
       "featureEngineering": "Feature Engineering",

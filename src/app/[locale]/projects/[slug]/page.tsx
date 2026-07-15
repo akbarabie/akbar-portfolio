@@ -11,6 +11,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ProjectCoverPlaceholder } from "@/components/ui/ProjectCoverPlaceholder";
 import { GithubIcon } from "@/components/ui/icons"; // sesuaikan kalau nama export beda
 import { publicAssetExists } from "@/lib/asset-exists";
+import { getLocalizedTagline, getLocalizedSectionContent } from "@/lib/localized-project";
 import { projects } from "@/data/projects";
 import { routing } from "@/i18n/routing";
 
@@ -25,16 +26,18 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
 
+  const tagline = getLocalizedTagline(project, locale);
+
   return {
     title: project.title,
-    description: project.tagline,
+    description: tagline,
     openGraph: {
       title: project.title,
-      description: project.tagline,
+      description: tagline,
       images: [project.assets.cover],
     },
   };
@@ -49,6 +52,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   const t = await getTranslations("projects");
   const hasCover = publicAssetExists(project.assets.cover);
+  const tagline = getLocalizedTagline(project, locale);
 
   return (
     <article>
@@ -58,7 +62,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           <h1 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
             {project.title}
           </h1>
-          <p className="mb-8 max-w-2xl text-lg text-text-muted">{project.tagline}</p>
+          <p className="mb-8 max-w-2xl text-lg text-text-muted">{tagline}</p>
 
           <div className="mb-10 flex flex-wrap gap-3">
             {project.links.github && (
@@ -111,22 +115,25 @@ export default async function ProjectDetailPage({ params }: Props) {
         </AnimatedSection>
 
         <div className="max-w-3xl space-y-10">
-          {project.sections.map((section) => (
-            <AnimatedSection key={section.key}>
-              <h2 className="mb-3 text-2xl font-semibold text-foreground">
-                {t(`sections.${section.key}`)}
-              </h2>
-              {section.content.length === 1 ? (
-                <p className="leading-relaxed text-text-muted">{section.content[0]}</p>
-              ) : (
-                <ul className="list-inside list-disc space-y-2 leading-relaxed text-text-muted">
-                  {section.content.map((paragraph, i) => (
-                    <li key={i}>{paragraph}</li>
-                  ))}
-                </ul>
-              )}
-            </AnimatedSection>
-          ))}
+          {project.sections.map((section) => {
+            const paragraphs = getLocalizedSectionContent(section, locale);
+            return (
+              <AnimatedSection key={section.key}>
+                <h2 className="mb-3 text-2xl font-semibold text-foreground">
+                  {t(`sections.${section.key}`)}
+                </h2>
+                {paragraphs.length === 1 ? (
+                  <p className="leading-relaxed text-text-muted">{paragraphs[0]}</p>
+                ) : (
+                  <ul className="list-inside list-disc space-y-2 leading-relaxed text-text-muted">
+                    {paragraphs.map((paragraph, i) => (
+                      <li key={i}>{paragraph}</li>
+                    ))}
+                  </ul>
+                )}
+              </AnimatedSection>
+            );
+          })}
         </div>
       </Container>
     </article>

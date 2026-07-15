@@ -76,6 +76,7 @@
     "sections": {
       "businessProblem": "Permasalahan Bisnis",
       "classDefinition": "Kelas Risiko",
+      "categories": "Kategori",
       "dataset": "Dataset",
       "methodology": "Metodologi",
       "featureEngineering": "Feature Engineering",
