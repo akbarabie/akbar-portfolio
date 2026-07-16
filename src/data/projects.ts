@@ -238,7 +238,7 @@ export const projects: Project[] = [
       "Streamlit Community Cloud",
     ],
     links: {
-      github: "https://github.com/akbarabie/indonesian-news-classification",
+      github: "https://github.com/akbarabie/indonesian-news-classification-ann",
       liveDemo: "https://indonesian-news-classification-ann.streamlit.app/",
     },
     assets: {
