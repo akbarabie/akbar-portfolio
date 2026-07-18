@@ -2,6 +2,14 @@ import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/data/site-config";
 
 /**
+ * `siteConfig.siteUrl` tanpa trailing slash — defensif. Kalau suatu saat
+ * siteUrl ke-isi ulang dengan "/" di akhir (sudah pernah kejadian: bikin
+ * sitemap generate URL dobel-slash kayak "mas-porto.my.id//id"), semua
+ * kode yang gabungin SITE_URL + path tetap aman.
+ */
+export const SITE_URL = siteConfig.siteUrl.replace(/\/+$/, "");
+
+/**
  * Bangun object `alternates.languages` untuk Next.js Metadata API — ini yang
  * jadi tag `<link rel="alternate" hreflang="...">`, sinyal ke Google bahwa
  * halaman ini punya versi bahasa lain di URL tertentu (bukan duplicate
@@ -21,11 +29,9 @@ export function buildLanguageAlternates(pathWithoutLocale: string) {
   const languages: Record<string, string> = {};
 
   for (const locale of routing.locales) {
-    languages[locale] = `${siteConfig.siteUrl}/${locale}${suffix}`;
+    languages[locale] = `${SITE_URL}/${locale}${suffix}`;
   }
 
-  // x-default: versi yang disodorkan Google kalau gak yakin bahasa mana yang
-  // paling cocok buat user — arahkan ke locale default situs.
   languages["x-default"] = languages[routing.defaultLocale];
 
   return languages;

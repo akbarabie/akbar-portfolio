@@ -12,6 +12,7 @@ import { siteConfig } from "@/data/site-config";
 import { PersonJsonLd } from "@/components/seo/PersonJsonLd";
 import { BackgroundDecoration } from "@/components/ui/BackgroundDecoration";
 import "../globals.css"; // naik satu level karena layout.tsx sekarang di dalam [locale]/
+import { SITE_URL } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,7 +44,7 @@ export async function generateMetadata({
     // yang DITOLAK sama Facebook/Twitter/LinkedIn crawler (mereka wajib
     // absolute URL) — jadi social preview card kemungkinan besar gak
     // muncul sama sekali sebelum fix ini.
-    metadataBase: new URL(siteConfig.siteUrl),
+    metadataBase: new URL(SITE_URL),
     title: siteConfig.title,
     description: t("description"),
   };
