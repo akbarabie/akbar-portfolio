@@ -14,6 +14,7 @@ import { publicAssetExists } from "@/lib/asset-exists";
 import { getLocalizedTagline, getLocalizedSectionContent } from "@/lib/localized-project";
 import { projects } from "@/data/projects";
 import { routing } from "@/i18n/routing";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.title,
     description: tagline,
+    alternates: { languages: buildLanguageAlternates(`/projects/${project.slug}`) },
     openGraph: {
       title: project.title,
       description: tagline,

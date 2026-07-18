@@ -10,6 +10,7 @@ import { BlogCoverPlaceholder } from "@/components/blog/BlogCoverPlaceholder";
 import { MDXContent } from "@/components/blog/MDXContent";
 import { publicAssetExists } from "@/lib/asset-exists";
 import { getPostBySlug, getAllPublishedParams } from "@/lib/blog";
+import { buildLanguageAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: { languages: buildLanguageAlternates(`/blog/${post.slug}`) },
     openGraph: {
       title: post.title,
       description: post.excerpt,

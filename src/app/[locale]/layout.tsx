@@ -9,6 +9,7 @@ import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/data/site-config";
+import { PersonJsonLd } from "@/components/seo/PersonJsonLd";
 import { BackgroundDecoration } from "@/components/ui/BackgroundDecoration";
 import "../globals.css"; // naik satu level karena layout.tsx sekarang di dalam [locale]/
 
@@ -36,6 +37,13 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "metadata" });
 
   return {
+     // metadataBase WAJIB ada — tanpa ini, Next.js gak bisa resolve URL
+    // relatif (og:image, alternates.languages, dst) jadi absolute URL yang
+    // valid. Tanpa metadataBase, og:image sebelumnya generate URL relatif
+    // yang DITOLAK sama Facebook/Twitter/LinkedIn crawler (mereka wajib
+    // absolute URL) — jadi social preview card kemungkinan besar gak
+    // muncul sama sekali sebelum fix ini.
+    metadataBase: new URL(siteConfig.siteUrl),
     title: siteConfig.title,
     description: t("description"),
   };
@@ -60,6 +68,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground antialiased">
+        <PersonJsonLd />
         <BackgroundDecoration />
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

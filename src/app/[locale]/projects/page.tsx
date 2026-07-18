@@ -6,6 +6,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { projects } from "@/data/projects";
 import { routing } from "@/i18n/routing";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
+    alternates: { languages: buildLanguageAlternates("/projects") },
   };
 }
 
