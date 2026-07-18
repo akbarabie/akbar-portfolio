@@ -75,6 +75,15 @@
       "impact": "Impact"
     }
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "A collection of technical articles covering data analysis, data science, artificial intelligence, machine learning, data engineering, software engineering, and lessons learned from real-world projects.",
+    "metaTitle": "Blog — Muhammad Akbar Suharbi",
+    "metaDescription": "Technical articles on data analysis, data science, artificial intelligence, machine learning, data engineering, and software engineering, based on real-world projects and practical experience.",
+    "empty": "No articles yet — check back soon.",
+    "backToBlog": "Back to blog",
+    "readTime": "{minutes} min read"
+  },
   "contact": {
     "title": "Let's Connect",
     "subtitle": "Open to opportunities, collaborations, and meaningful conversations about AI, data, and technology.",

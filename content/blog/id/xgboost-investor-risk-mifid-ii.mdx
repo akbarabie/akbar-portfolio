@@ -1,0 +1,80 @@
+---
+title: "Kenapa XGBoost Menang: Benchmark 5 Algoritma untuk Classifier Risiko yang Taruhannya Tinggi"
+excerpt: "Membangun classifier risiko investor yang patuh MiFID II mengajarkan saya bahwa memilih model bukan cuma soal akurasi — tapi soal kesalahan mana yang gak boleh sampai terjadi."
+date: "2026-07-10"
+tags: ["XGBoost", "Machine Learning", "Model Deployment", "MLOps"]
+cover: "/images/blog/Xgboost.png"
+published: true
+---
+
+Kebanyakan tutorial memperlakukan pemilihan model seperti papan leaderboard: jalankan lima algoritma, pilih yang F1-score-nya paling tinggi, lalu deploy. Pendekatan itu langsung runtuh begitu kesalahan model kamu punya konsekuensi regulasi.
+
+Itu persis constraint yang saya hadapi waktu membangun **classifier risiko investor 4-kelas** — Conservative, Income, Balanced, Aggressive — untuk mendukung suitability assessment yang di-drive MiFID II bagi tim Relationship Manager dan Compliance, dilatih dari 21.000+ data investor.
+
+## Tujuan sebenarnya bukan akurasi
+
+Di bawah MiFID II, seorang Relationship Manager yang merekomendasikan produk agresif ke investor konservatif bukan cuma "salah" — itu menciptakan risiko regulasi dan reputasi. Jadi metrik keberhasilan project ini gak pernah cuma "F1-Macro paling tinggi." Metriknya adalah:
+
+- Performa klasifikasi keseluruhan yang kuat, **dan**
+- **Nol** kasus investor Conservative yang salah diklasifikasikan sebagai Aggressive (atau sebaliknya)
+
+Constraint kedua itu diam-diam mendiskualifikasi model yang cuma "bagus rata-rata." Classifier yang benar 95% kasus tapi sesekali ketuker di dua ekstrem itu justru lebih berbahaya di sini dibanding model dengan akurasi sedikit lebih rendah tapi bersih di area ekstrem.
+
+## Benchmark secara jujur, bukan cherry-pick
+
+Sebelum menyentuh model apa pun, pipeline preprocessing harus leakage-safe dulu: stratified train-test split, outlier capping berbasis IQR, dan `ColumnTransformer` yang menggabungkan `StandardScaler` dengan skema hybrid One-Hot/Ordinal encoding — dipilih hanya setelah memvalidasi relevansi fitur lewat ANOVA F-test dan Chi-Square test, serta menyelesaikan multikolinearitas lewat feature selection berbasis korelasi.
+
+Setelah pipeline-nya settled, saya benchmark lima algoritma di kondisi yang identik pakai 5-fold cross-validation:
+
+1. K-Nearest Neighbors
+2. Support Vector Machine
+3. Decision Tree
+4. Random Forest
+5. XGBoost
+
+XGBoost unggul — bukan menang telak, tapi konsisten di semua fold, dan yang paling penting: tanpa melanggar constraint zero-misclassification di kelas ekstrem.
+
+## Memeras performa terakhir yang tersisa
+
+Setelah XGBoost terpilih sebagai baseline terbaik, saya tuning lebih lanjut pakai `RandomizedSearchCV`, bukan grid search yang exhaustive — dengan dataset 21 ribu baris dan banyak hyperparameter yang perlu dieksplorasi, randomized search bisa mendekati optimum dengan biaya komputasi jauh lebih kecil:
+
+```python
+from sklearn.model_selection import RandomizedSearchCV
+from xgboost import XGBClassifier
+
+param_distributions = {
+    "n_estimators": [200, 300, 400, 500],
+    "max_depth": [3, 4, 5, 6],
+    "learning_rate": [0.01, 0.05, 0.1],
+    "subsample": [0.7, 0.8, 0.9, 1.0],
+    "colsample_bytree": [0.7, 0.8, 0.9, 1.0],
+}
+
+search = RandomizedSearchCV(
+    estimator=XGBClassifier(objective="multi:softprob", eval_metric="mlogloss"),
+    param_distributions=param_distributions,
+    n_iter=50,
+    scoring="f1_macro",
+    cv=5,
+    n_jobs=-1,
+    random_state=42,
+)
+
+search.fit(X_train, y_train)
+```
+
+Tuning ini meningkatkan F1-Macro sekitar **1,3 poin** dibanding baseline yang belum di-tuning — angka yang kedengarannya kecil, tapi berarti banyak kalau model baseline-nya udah kompetitif duluan, dan setiap pecahan poin itu datang dari decision boundary yang benar-benar lebih baik, bukan dari noise.
+
+> Safety property-nya — zero high-risk misclassification — bertahan di setiap iterasi tuning, bukan cuma di model final. Itu acceptance criterion yang sesungguhnya, bukan skor leaderboard.
+
+## Deploy ke tempat yang bisa benar-benar dicoba reviewer
+
+Notebook dengan F1-score bagus gak membantu tim Compliance mengevaluasi apakah mereka percaya sama model itu. Jadi classifier final dibungkus dalam custom preprocessing transformer module untuk serialisasi yang production-safe, lalu di-deploy sebagai aplikasi Streamlit interaktif di Hugging Face Spaces — sehingga Relationship Manager dan stakeholder Compliance bisa memasukkan atribut investor dan langsung melihat prediksi kelas risikonya, tanpa perlu baca satu baris Python pun.
+
+## Pelajaran yang dibawa pulang
+
+Kalau ada satu hal yang layak dibawa ke project klasifikasi berikutnya, itu adalah: **metrik yang kamu optimalkan harus datang dari biaya kesalahan, bukan dari apa yang paling gampang dihitung.** F1-Macro perlu, tapi gak cukup di sini — spesifikasi sebenarnya adalah "jangan sampai dua ekstrem ketuker," dan setiap keputusan arsitektur, dari feature encoding sampai hyperparameter search, dibuat demi constraint itu duluan.
+
+---
+
+*Project ini — termasuk pipeline preprocessing lengkap, notebook benchmarking, dan aplikasi Streamlit yang sudah di-deploy — adalah bagian dari [project Investor Risk Profiling](/projects/investor-risk-profiling) saya.*

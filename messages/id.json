@@ -87,6 +87,15 @@
       "impact": "Dampak"
     }
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Kumpulan artikel teknis seputar analisis data, data science, kecerdasan buatan, machine learning, data engineering, software engineering, serta pengalaman dan pembelajaran dari pengembangan proyek di dunia nyata.",
+    "metaTitle": "Blog — Muhammad Akbar Suharbi",
+    "metaDescription": "Artikel teknis seputar analisis data, data science, kecerdasan buatan, machine learning, data engineering, dan software engineering, yang disusun berdasarkan pengalaman praktis dan proyek-proyek nyata.",
+    "empty": "Belum ada artikel — cek lagi nanti.",
+    "backToBlog": "Kembali ke blog",
+    "readTime": "{minutes} menit baca"
+  },
   "contact": {
     "title": "Mari Terhubung",
     "subtitle": "Terbuka untuk peluang karier, kolaborasi, dan diskusi seputar AI, data, dan teknologi.",

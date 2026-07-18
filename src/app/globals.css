@@ -183,3 +183,20 @@ body {
   background: var(--color-accent);
   box-shadow: 0 0 0 4px var(--color-background);
 }
+
+/* Blog MDX content */
+/* Shiki nge-render code block sebagai <pre class="shiki">, ada <code> di
+   dalamnya. <code> itu juga match komponen "inline code" kita di
+   mdx-components.tsx (bg-card, padding, dst) — reset di sini biar code
+   block gak dobel-styling sama styling inline-code. */
+.mdx-content pre code {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+}
+
+.mdx-content pre .line {
+  display: block;
+}

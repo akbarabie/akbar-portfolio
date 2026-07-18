@@ -1,0 +1,80 @@
+---
+title: "Why XGBoost Won: Benchmarking 5 Algorithms for a High-Stakes Risk Classifier"
+excerpt: "Building a MiFID II-compliant investor risk classifier taught me that picking a model isn't just about accuracy — it's about which mistakes you can never afford to make."
+date: "2026-07-10"
+tags: ["XGBoost", "Machine Learning", "Model Deployment", "MLOps"]
+cover: "/images/blog/Xgboost.png"
+published: true
+---
+
+Most tutorials frame model selection as a leaderboard problem: run five algorithms, pick the one with the highest F1-score, ship it. That approach falls apart the moment your model's mistakes have regulatory consequences.
+
+That's exactly the constraint I was working under while building a **4-class investor risk classifier** — Conservative, Income, Balanced, Aggressive — to support MiFID II-driven suitability assessments for Relationship Manager and Compliance teams, trained on 21,000+ investor records.
+
+## The real objective wasn't accuracy
+
+Under MiFID II, a Relationship Manager who recommends an aggressive product to a conservative investor isn't just wrong — they've created regulatory and reputational risk. So the success metric for this project was never just "highest F1-Macro." It was:
+
+- Strong overall classification performance, **and**
+- **Zero** cases where a Conservative investor gets misclassified as Aggressive (or vice versa)
+
+That second constraint quietly eliminates any model that's merely "good on average." A classifier that nails 95% of cases but occasionally confuses the two extremes is more dangerous here than one with slightly lower accuracy but a clean safety record on the extremes.
+
+## Benchmarking honestly, not cherry-picking
+
+Before touching any model, the preprocessing pipeline had to be leakage-safe: stratified train-test split, IQR-based outlier capping, and a `ColumnTransformer` combining `StandardScaler` with a hybrid One-Hot/Ordinal encoding scheme — chosen only after validating feature relevance with ANOVA F-tests and Chi-Square tests, and resolving multicollinearity through correlation-driven feature selection.
+
+With the pipeline settled, I benchmarked five algorithms under identical conditions using 5-fold cross-validation:
+
+1. K-Nearest Neighbors
+2. Support Vector Machine
+3. Decision Tree
+4. Random Forest
+5. XGBoost
+
+XGBoost came out ahead — not by a landslide, but consistently across folds, and critically, without violating the zero-misclassification constraint on the extreme classes.
+
+## Squeezing out the last bit of performance
+
+Once XGBoost was selected as the baseline winner, I tuned it further with `RandomizedSearchCV` rather than an exhaustive grid search — with a 21k-row dataset and multiple hyperparameters to explore, randomized search gets you close to the optimum at a fraction of the compute cost:
+
+```python
+from sklearn.model_selection import RandomizedSearchCV
+from xgboost import XGBClassifier
+
+param_distributions = {
+    "n_estimators": [200, 300, 400, 500],
+    "max_depth": [3, 4, 5, 6],
+    "learning_rate": [0.01, 0.05, 0.1],
+    "subsample": [0.7, 0.8, 0.9, 1.0],
+    "colsample_bytree": [0.7, 0.8, 0.9, 1.0],
+}
+
+search = RandomizedSearchCV(
+    estimator=XGBClassifier(objective="multi:softprob", eval_metric="mlogloss"),
+    param_distributions=param_distributions,
+    n_iter=50,
+    scoring="f1_macro",
+    cv=5,
+    n_jobs=-1,
+    random_state=42,
+)
+
+search.fit(X_train, y_train)
+```
+
+This tuning pass improved F1-Macro by roughly **1.3 points** over the untuned baseline — a modest-sounding number, but meaningful when the untuned model was already competitive, and every fraction of a point comes from genuinely better decision boundaries rather than noise.
+
+> The safety property — zero high-risk misclassifications — held throughout every iteration of tuning, not just in the final model. That was the actual acceptance criterion, not the leaderboard score.
+
+## Shipping it somewhere reviewers can actually touch
+
+A notebook with a good F1-score doesn't help a Compliance team evaluate whether they trust the model. So the final classifier was wrapped in a custom preprocessing transformer module for production-safe serialization, and deployed as an interactive Streamlit app on Hugging Face Spaces — letting Relationship Managers and Compliance stakeholders enter investor attributes and see the predicted risk class directly, without needing to read a single line of Python.
+
+## The takeaway
+
+If there's one thing worth carrying into the next classification project, it's this: **the metric you optimize for should come from the cost of being wrong, not from what's easiest to compute.** F1-Macro was necessary but not sufficient here — the real spec was "never confuse the two extremes," and every architectural decision, from feature encoding to hyperparameter search, was made in service of that constraint first.
+
+---
+
+*This project — including the full preprocessing pipeline, benchmarking notebook, and the deployed Streamlit app — is part of my [Investor Risk Profiling project](/projects/investor-risk-profiling).*
