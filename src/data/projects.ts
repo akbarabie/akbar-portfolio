@@ -239,7 +239,7 @@ export const projects: Project[] = [
     ],
     links: {
       github: "https://github.com/akbarabie/indonesian-news-classification-ann",
-      liveDemo: "https://indonesian-news-classification-ann.streamlit.app/",
+      liveDemo: "https://indonesian-news-classification.streamlit.app/",
     },
     assets: {
       cover: "/images/projects/image_news.png", // placeholder, file belum ada
