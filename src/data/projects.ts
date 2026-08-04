@@ -417,4 +417,88 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "retail-revenue-profit-pipeline",
+    title: "RetailIQ: Automated Revenue & Profit Analytics Pipeline",
+    categories: ["data-engineer"],
+    year: "2026",
+    tagline:
+      "Automated ETL pipeline moving retail sales data from PostgreSQL to a validated, dashboard-ready index in Elasticsearch/Kibana, orchestrated end-to-end by Apache Airflow.",
+    taglineId:
+      "Pipeline ETL otomatis yang mengalirkan data penjualan retail dari PostgreSQL ke index Elasticsearch/Kibana yang tervalidasi dan siap-dashboard, diorkestrasi penuh oleh Apache Airflow.",
+    techStack: [
+      "Python",
+      "Apache Airflow",
+      "PostgreSQL",
+      "Elasticsearch",
+      "Kibana",
+      "Great Expectations",
+      "Docker Compose",
+    ],
+    links: {
+      github: "https://github.com/akbarabie/retail-revenue-profit-pipeline",
+      // liveDemo sengaja di-omit, bukan diisi "#" — lihat catatan soal tombol mati di atas
+    },
+    assets: {
+      cover: "/images/projects/retail-analyst.png",
+      screenshots: [],
+      architectureDiagram: undefined,
+    },
+    sections: [
+      {
+        key: "businessProblem",
+        content: [
+          "Retail transaction data across two cities (Sydney and Melbourne) and three product lines sat untouched in an operational database, with no repeatable process to validate its quality or turn it into something Sales and Finance could read without opening a spreadsheet before every meeting. Built an automated pipeline that validates the data on every run and pushes it straight into an interactive dashboard.",
+        ],
+        contentId: [
+          "Data transaksi retail lintas dua kota (Sydney dan Melbourne) dan tiga lini produk cuma numpuk di database operasional, tanpa proses yang rapi untuk memvalidasi kualitasnya atau menyajikannya dalam bentuk yang gampang dibaca tim Sales dan Finance tanpa buka spreadsheet setiap rapat. Dibangun pipeline otomatis yang memvalidasi data di setiap run dan langsung mengalirkannya ke dashboard interaktif.",
+        ],
+      },
+      {
+        key: "dataset",
+        content: [
+          "5,000 retail transactions (2013–2017) across Sydney/NSW and Melbourne/VIC, spanning Office Supplies, Technology, and Furniture, with 19 account managers and four customer types from Corporate to individual Consumer. Cleaning expanded the raw 24 columns to 27, including recomputed revenue (price × quantity) and profit (margin × quantity) columns to replace an inconsistent built-in total.",
+        ],
+        contentId: [
+          "5.000 transaksi retail (2013–2017) di Sydney/NSW dan Melbourne/VIC, mencakup Office Supplies, Technology, dan Furniture, dengan 19 account manager dan empat tipe pelanggan dari Corporate sampai Consumer perorangan. Proses cleaning memperluas 24 kolom mentah jadi 27, termasuk kolom revenue (harga × kuantitas) dan profit (margin × kuantitas) yang dihitung ulang untuk menggantikan kolom total bawaan yang inkonsisten.",
+        ],
+      },
+      {
+        key: "architecture",
+        content: [
+          "A single Airflow DAG runs the full ETL in three tasks — fetch from PostgreSQL, clean the data (deduplication, column normalization, missing-value handling), then post the validated result to Elasticsearch — with Kibana reading directly from the resulting index.",
+        ],
+        contentId: [
+          "Satu DAG Airflow menjalankan seluruh ETL dalam tiga task — ambil dari PostgreSQL, bersihkan data (deduplikasi, normalisasi kolom, penanganan missing value), lalu kirim hasil yang sudah tervalidasi ke Elasticsearch — dengan Kibana membaca langsung dari index hasilnya.",
+        ],
+      },
+      {
+        key: "methodology",
+        content: [
+          "Data passes through Great Expectations validation before it's trusted enough to reach Elasticsearch: 7 expectations covering uniqueness, value ranges, valid categories, data types, and string format, all required to return success before the pipeline continues. The DAG runs on a fixed weekly schedule and was verified stable across repeated runs.",
+        ],
+        contentId: [
+          "Data melewati validasi Great Expectations sebelum cukup dipercaya untuk masuk Elasticsearch: 7 expectation yang mengecek keunikan, rentang nilai, kategori valid, tipe data, dan format string, semuanya wajib bernilai sukses sebelum pipeline lanjut. DAG berjalan sesuai jadwal mingguan tetap dan sudah diverifikasi stabil lewat beberapa kali run berulang.",
+        ],
+      },
+      {
+        key: "impact",
+        content: [
+          "Office Supplies drove revenue disproportionately to its transaction volume — not just the most-bought category but the largest revenue contributor. The Corporate segment carried the strongest profit ratio of the four customer types, an argument for prioritizing retention there. Profit distribution across account managers was highly uneven, with part of that spread traced to inconsistent name spellings — flagged as a data governance issue before the numbers get used for individual performance evaluation. Monthly revenue from 2013–2017 stayed volatile with no clear seasonal pattern, meaning a simple season-based forecast likely wouldn't hold up on this data.",
+        ],
+        contentId: [
+          "Office Supplies menyumbang revenue secara tidak proporsional terhadap volume transaksinya — bukan cuma kategori paling sering dibeli, tapi juga penyumbang pendapatan terbesar. Segmen Corporate punya rasio profit paling kuat dari empat tipe pelanggan, jadi masuk akal kalau tim sales memprioritaskan retensi di segmen ini. Distribusi profit antar account manager sangat timpang, sebagian karena ejaan nama yang tidak konsisten — dicatat sebagai isu data governance sebelum angka ini dipakai untuk evaluasi kinerja individu. Revenue bulanan 2013–2017 tetap volatile tanpa pola seasonal yang jelas, artinya forecasting sederhana berbasis musim kemungkinan besar tidak akurat untuk data ini.",
+        ],
+      },
+      {
+        key: "deployment",
+        content: [
+          "Runs fully containerized via Docker Compose (PostgreSQL, Airflow, Elasticsearch, Kibana), making the entire environment reproducible from a single command.",
+        ],
+        contentId: [
+          "Berjalan penuh dalam container lewat Docker Compose (PostgreSQL, Airflow, Elasticsearch, Kibana), membuat seluruh environment bisa direproduksi cuma dari satu perintah.",
+        ],
+      },
+    ],
+  },
 ];
