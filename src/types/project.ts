@@ -19,13 +19,12 @@ export type SectionKey =
   | "architecture"
   | "deployment"
   | "impact"
-  |  "aiAgent";
+  | "aiAgent";
 
 export interface ProjectSection {
   key: SectionKey;
-  // 1 elemen -> dirender sebagai paragraf. >1 elemen -> dirender sebagai bullet list.
   content: string[];
-  contentId?: string[]; // versi bahasa Indonesia dari content, optional
+  contentId?: string[];
 }
 
 export interface ProjectLinks {
@@ -34,21 +33,24 @@ export interface ProjectLinks {
 }
 
 export interface ProjectAssets {
-  cover: string; // path relatif ke /public, wajib diisi walau file fisiknya belum ada
+  cover: string;
   screenshots?: string[];
   architectureDiagram?: string;
 }
 
 export interface Project {
-  slug: string; // dipakai di /projects/[slug]
+  slug: string;
   title: string;
-  category: ProjectCategory;
+  // Semua role yang benar-benar dikerjakan di project ini, diurutkan sesuai
+  // urutan pengerjaan aktual. Index [0] dipakai sebagai kategori "primer" di
+  // tempat yang cuma butuh satu (mis. ProjectCoverPlaceholder icon).
+  categories: ProjectCategory[];
   year: string;
-  tagline: string; // one-liner buat card di homepage
-  taglineId?: string; // versi bahasa Indonesia dari tagline, optional
+  tagline: string;
+  taglineId?: string;
   techStack: string[];
   links: ProjectLinks;
   assets: ProjectAssets;
   sections: ProjectSection[];
-  featured?: boolean; // flag flagship project (Investor Risk Profiling -> AI Playground)
+  featured?: boolean;
 }

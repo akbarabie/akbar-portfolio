@@ -33,12 +33,26 @@ export async function ProjectCard({ project }: ProjectCardProps) {
           <CardImage src={project.assets.cover} alt={project.title} />
         ) : (
           <div className="relative aspect-video w-full overflow-hidden bg-background">
-            <ProjectCoverPlaceholder category={project.category} title={project.title} />
+            <ProjectCoverPlaceholder category={project.categories[0]} title={project.title} />
           </div>
         )}
 
         <CardHeader>
-          <Badge className="w-fit">{t(`categories.${project.category}`)}</Badge>
+          <div className="flex flex-wrap gap-2">
+            <Badge className="w-fit">{t(`categories.${project.categories[0]}`)}</Badge>
+            {project.categories.length > 1 && (
+              <Badge
+                variant="outline"
+                className="w-fit"
+                title={project.categories
+                  .slice(1)
+                  .map((category) => t(`categories.${category}`))
+                  .join(", ")}
+              >
+                +{project.categories.length - 1}
+              </Badge>
+            )}
+          </div>
           <CardTitle>{project.title}</CardTitle>
           <CardDescription>{tagline}</CardDescription>
         </CardHeader>

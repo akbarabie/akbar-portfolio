@@ -5,7 +5,7 @@ export const projects: Project[] = [
   {
     slug: "investor-risk-profiling",
     title: "Investor Risk Profile Classification for MiFID II Compliance",
-    category: "data-scientist",
+    categories: ["data-scientist"],
     year: "2026",
     tagline:
       "4-class investor risk classifier on 21K+ records, with zero high-risk misclassifications.",
@@ -22,15 +22,17 @@ export const projects: Project[] = [
       "Hugging Face Spaces",
     ],
     links: {
-      github: "https://github.com/akbarabie/risk_profile_prediction", // TODO: isi link repo
-      liveDemo: "https://huggingface.co/spaces/Mrabb20/risk_profile_prediction", // TODO: isi link Streamlit / HF Spaces
+      github: "https://github.com/akbarabie/risk_profile_prediction",
+      liveDemo: "https://huggingface.co/spaces/Mrabb20/risk_profile_prediction",
     },
     assets: {
-      cover: "/images/projects/risk_profile.png", // placeholder, file belum ada
+      cover: "/images/projects/risk_profile.png",
       screenshots: [],
       architectureDiagram: undefined,
     },
-    featured: true,
+    // TODO: catatan dari sesi sebelumnya — ini kandidat demo utama AI Playground,
+    // tapi keputusan featured/AI Playground belum difinalisasi. Belum diaktifkan
+    // di sini biar konsisten sama state project sebelum perubahan ini.
     sections: [
       {
         key: "businessProblem",
@@ -94,7 +96,7 @@ export const projects: Project[] = [
   {
     slug: "pizza-sales-performance",
     title: "Pizza Sales Performance 2025 & Q1 Projection 2026",
-    category: "data-analyst",
+    categories: ["data-analyst"],
     year: "2026",
     tagline:
       "50K+ transaction analysis validating a high-margin 'Golden Hour' to support a 20% Q1 growth target.",
@@ -111,11 +113,11 @@ export const projects: Project[] = [
       "Microsoft Excel",
     ],
     links: {
-      github: "https://github.com/akbarabie/pizza-sales-analysis/tree/main", // TODO: isi link repo
-      liveDemo: "https://public.tableau.com/views/M01_Muhammad_Akbar_Suharbi/DashboardMain?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link", // TODO: isi link Tableau Public (kalau dipublish)
+      github: "https://github.com/akbarabie/pizza-sales-analysis/tree/main",
+      liveDemo: "https://public.tableau.com/views/M01_Muhammad_Akbar_Suharbi/DashboardMain?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
     },
     assets: {
-      cover: "/images/projects/pizza.webp", // placeholder, file belum ada
+      cover: "/images/projects/pizza.webp",
       screenshots: [],
       architectureDiagram: undefined,
     },
@@ -161,7 +163,7 @@ export const projects: Project[] = [
   {
     slug: "medical-report-crr",
     title: "Medical Report CRR",
-    category: "data-engineer",
+    categories: ["data-engineer"],
     year: "2021",
     tagline:
       "Web-based CRR reporting platform — automated data migration and dashboarding, cutting manual reporting time by 70%.",
@@ -177,11 +179,11 @@ export const projects: Project[] = [
       "Microsoft Excel",
     ],
     links: {
-      github: "#", // TODO: isi link repo
-      liveDemo: "#", // kemungkinan besar kosong permanen — internal tool, bukan public-facing
+      github: "#",
+      liveDemo: "#",
     },
     assets: {
-      cover: "/images/projects/crr.webp", // placeholder, file belum ada
+      cover: "/images/projects/crr.webp",
       screenshots: [],
       architectureDiagram: undefined,
     },
@@ -221,7 +223,7 @@ export const projects: Project[] = [
   {
     slug: "indonesian-news-classification",
     title: "Automatic Indonesian News Classification",
-    category: "data-scientist",
+    categories: ["data-scientist"],
     year: "2026", // TODO: confirm — inferred from Hacktiv8 timing, not stated in README
     tagline:
       "End-to-end NLP pipeline classifying Indonesian news headlines into 5 categories with a 4-model ensemble, deployed for editorial teams.",
@@ -242,7 +244,7 @@ export const projects: Project[] = [
       liveDemo: "https://indonesian-news-classification.streamlit.app/",
     },
     assets: {
-      cover: "/images/projects/image_news.png", // placeholder, file belum ada
+      cover: "/images/projects/image_news.png",
       screenshots: [],
       architectureDiagram: undefined,
     },
@@ -314,8 +316,8 @@ export const projects: Project[] = [
   {
     slug: "smart-pharma-inventory-intelligence",
     title: "Smart Pharma Inventory Intelligence",
-    category: "data-engineer", // TODO: project ini lintas 3 role (DE→DA→DS)
-    year: "2026",
+    categories: ["data-engineer", "data-analyst", "data-scientist"],
+    year: "2026", // TODO: confirm — inferred from Hacktiv8 timing
     tagline:
       "Demand forecasting, expiry-risk detection, and an AI procurement assistant for a vital-medicine warehouse — built solo across all three data roles.",
     taglineId:
@@ -328,9 +330,11 @@ export const projects: Project[] = [
       "PostgreSQL (Neon)",
       "Prophet",
       "Scikit-learn",
-      "Google Gemini API",
+      "API Google Gemini API",
       "Streamlit",
       "Docker Compose",
+      "LLM",
+      "AI Agent",
     ],
     links: {
       github: "https://github.com/akbarabie/smart_pharma_inventory", // TODO: isi link repo
@@ -341,7 +345,6 @@ export const projects: Project[] = [
       screenshots: [],
       architectureDiagram: undefined,
     },
-    featured: true, // opsional — kandidat flagship end-to-end, hapus kalau nggak mau
     sections: [
       {
         key: "businessProblem",

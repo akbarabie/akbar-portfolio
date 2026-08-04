@@ -60,7 +60,11 @@ export default async function ProjectDetailPage({ params }: Props) {
     <article>
       <Container className="py-24">
         <AnimatedSection>
-          <Badge className="mb-4">{t(`categories.${project.category}`)}</Badge>
+          <div className="mb-4 flex flex-wrap gap-2">
+            {project.categories.map((category) => (
+              <Badge key={category}>{t(`categories.${category}`)}</Badge>
+            ))}
+          </div>
           <h1 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
             {project.title}
           </h1>
@@ -98,7 +102,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 className="object-cover"
               />
             ) : (
-              <ProjectCoverPlaceholder category={project.category} title={project.title} />
+              <ProjectCoverPlaceholder category={project.categories[0]} title={project.title} />
             )}
           </div>
         </AnimatedSection>
