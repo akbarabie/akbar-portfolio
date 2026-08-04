@@ -72,7 +72,8 @@
       "modelEvaluation": "Model Evaluation",
       "architecture": "Architecture",
       "deployment": "Deployment",
-      "impact": "Impact"
+      "impact": "Impact",
+      "aiAgent": "AI Agent"
     }
   },
   "blog": {

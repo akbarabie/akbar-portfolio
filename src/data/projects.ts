@@ -311,4 +311,107 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "smart-pharma-inventory-intelligence",
+    title: "Smart Pharma Inventory Intelligence",
+    category: "data-engineer", // TODO: project ini lintas 3 role (DE→DA→DS)
+    year: "2026",
+    tagline:
+      "Demand forecasting, expiry-risk detection, and an AI procurement assistant for a vital-medicine warehouse — built solo across all three data roles.",
+    taglineId:
+      "Sistem peramalan stok, deteksi risiko kadaluwarsa, dan asisten pengadaan berbasis AI untuk gudang obat vital — dikerjakan solo lintas tiga peran data.",
+    techStack: [
+      "Python",
+      "Apache Airflow",
+      "MinIO",
+      "Great Expectations",
+      "PostgreSQL (Neon)",
+      "Prophet",
+      "Scikit-learn",
+      "Google Gemini API",
+      "Streamlit",
+      "Docker Compose",
+    ],
+    links: {
+      github: "https://github.com/akbarabie/smart_pharma_inventory", // TODO: isi link repo
+      liveDemo: "https://smart-pharma-inventory.streamlit.app/",
+    },
+    assets: {
+      cover: "/images/projects/smart_pharma.png", // TODO: isi cover, file belum ada
+      screenshots: [],
+      architectureDiagram: undefined,
+    },
+    featured: true, // opsional — kandidat flagship end-to-end, hapus kalau nggak mau
+    sections: [
+      {
+        key: "businessProblem",
+        content: [
+          "Hospital pharmacy warehouses managing vital medicines face two compounding risks that are usually handled manually: running out of critical stock, and losing inventory to expiry. Built a batch-scored data platform — orchestrated through a single weekly Airflow DAG — that forecasts demand per medicine-warehouse pair, flags batches at risk of expiring before they sell through, and turns those signals into procurement recommendations reviewable through a Streamlit app.",
+        ],
+        contentId: [
+          "Gudang farmasi rumah sakit yang mengelola obat vital menghadapi dua risiko yang saling berkaitan dan biasanya masih ditangani manual: kehabisan stok obat kritis, dan kerugian akibat obat kadaluwarsa. Dibangun sebuah platform data batch-scored — diorkestrasi lewat satu DAG Airflow mingguan — yang meramalkan demand per kombinasi obat-gudang, menandai batch berisiko kadaluwarsa sebelum terjual habis, dan mengubah sinyal tersebut menjadi rekomendasi pengadaan yang bisa direview lewat aplikasi Streamlit.",
+        ],
+      },
+      {
+        key: "architecture",
+        content: [
+          "Data flows through a medallion architecture — Bronze (raw, MinIO) validated by a Great Expectations data-quality gate, Silver (cleaned, corrupted rows quarantined), and Gold (star schema) — before feeding two parallel models and an LLM-narrated recommendation agent. The whole pipeline, from extraction to model training, is orchestrated by a single Airflow DAG on a weekly schedule; the Streamlit app reads only from the Gold layer and never runs a model live, a deliberate batch-scoring rather than live-inference design.",
+        ],
+        contentId: [
+          "Data mengalir lewat arsitektur medallion — Bronze (raw, MinIO) yang divalidasi lewat gerbang data quality Great Expectations, Silver (data bersih, baris rusak dikarantina), dan Gold (star schema) — sebelum masuk ke dua model paralel dan agent rekomendasi bernarasi LLM. Seluruh pipeline, dari ekstraksi sampai training model, diorkestrasi oleh satu DAG Airflow dengan jadwal mingguan; aplikasi Streamlit hanya membaca dari layer Gold dan tidak pernah menjalankan model secara live — desain batch-scoring yang disengaja, bukan live inference.",
+        ],
+      },
+      {
+        key: "dataset",
+        content: [
+          "Combines one real dataset — Indonesia's e-Fornas essential-medicines catalog (663 medicines) — with simulated stock movement, batch, and expiry data, since no public dataset matched this project's schema. Procurement price data (e-Katalog LKPP) was dropped from scope after three official channels — API, manual download, and the open-data portal — all proved unusable, rather than being replaced with synthetic prices.",
+        ],
+        contentId: [
+          "Menggabungkan satu dataset nyata — katalog obat esensial e-Fornas Kemenkes Indonesia (663 obat) — dengan data pergerakan stok, batch, dan kadaluwarsa yang disimulasikan, karena tidak ada dataset publik yang sesuai skema project ini. Data harga pengadaan (e-Katalog LKPP) dihapus dari scope setelah tiga jalur resmi — API, unduhan manual, dan portal data terbuka — semuanya terbukti tidak bisa dipakai, bukan digantikan dengan harga sintetis.",
+        ],
+      },
+      {
+        key: "modelDevelopment",
+        content: [
+          "Demand forecasting uses one Prophet model per medicine-warehouse pair (80 combinations total), with yearly seasonality disabled since roughly two years of history wasn't enough to trust an annual pattern, but weekly seasonality enabled to capture the deliberately-designed weekend demand dip.",
+          "Expiry-risk classification compares Logistic Regression, XGBoost, and LightGBM under repeated 5-fold cross-validation, with risk labels derived from batch-level in/out totals versus expiry date rather than taken from raw data, to avoid leakage.",
+        ],
+        contentId: [
+          "Peramalan demand memakai satu model Prophet per kombinasi obat-gudang (80 kombinasi), dengan yearly seasonality dimatikan karena histori sekitar dua tahun belum cukup dipercaya untuk pola tahunan, tapi weekly seasonality diaktifkan untuk menangkap penurunan demand akhir pekan yang memang didesain dalam simulasi.",
+          "Klasifikasi risiko kadaluwarsa membandingkan Logistic Regression, XGBoost, dan LightGBM lewat repeated 5-fold cross-validation, dengan label risiko diturunkan dari total masuk-keluar per batch dibanding tanggal kadaluwarsa — bukan diambil dari data mentah — untuk menghindari data leakage.",
+        ],
+      },
+      {
+        key: "modelEvaluation",
+        content: [
+          "Prophet beat a seasonal-naive baseline in 79 of 80 combinations, cutting MAPE from 41.85% to 29.21% on a 60-day time-based holdout.",
+          "Logistic Regression was the strongest of the three at ROC-AUC 0.557 — barely above chance. Rather than hide this, the limitation is reported directly: with only 168 training rows, tree ensembles overfit and underperformed the baseline, and the underlying waste/stockout outcome appears dominated by random daily-demand variance rather than a learnable batch pattern.",
+        ],
+        contentId: [
+          "Prophet mengalahkan baseline seasonal-naive di 79 dari 80 kombinasi, menurunkan MAPE dari 41.85% ke 29.21% pada holdout berbasis waktu 60 hari terakhir.",
+          "Logistic Regression jadi yang terkuat dari ketiganya dengan ROC-AUC 0.557 — nyaris setara tebakan acak. Alih-alih disembunyikan, keterbatasan ini dilaporkan langsung: dengan cuma 168 baris data training, model berbasis pohon jadi overfit dan performanya di bawah baseline, dan outcome waste/kehabisan stok tampaknya lebih didominasi variasi acak konsumsi harian daripada pola batch yang bisa dipelajari.",
+        ],
+      },
+      {
+        key: "aiAgent",
+        content: [
+          "A procurement recommendation generator reads both model outputs, selects the 15 highest-risk batches per run, and decides the action type (redistribution, fast discount, FEFO priority) through rule-based code operating on the actual numbers — an LLM (Gemini) is only called afterward to narrate the result, and is never asked to recompute anything, following an explicit anti-hallucination rule from the project's PRD.",
+          "A separate Q&A chatbot answers stock, expiry, and risk questions through three constrained function-calling tools rather than free text-to-SQL, deliberately trading flexibility for a lower risk of an incorrect or unsafe generated query.",
+        ],
+        contentId: [
+          "Sebuah generator rekomendasi pengadaan membaca kedua output model, memilih 15 batch berisiko tertinggi per run, dan menentukan jenis tindakan (redistribusi, diskon cepat, prioritas FEFO) lewat kode berbasis aturan yang bekerja di atas angka aktual — LLM (Gemini) baru dipanggil setelahnya untuk merangkai narasinya, dan tidak pernah diminta menghitung ulang apa pun, mengikuti aturan anti-halusinasi eksplisit dari PRD project ini.",
+          "Chatbot Q&A terpisah menjawab pertanyaan seputar stok, kadaluwarsa, dan risiko lewat tiga tool function-calling yang dibatasi, bukan text-to-SQL bebas — trade-off yang disengaja demi risiko query salah atau berbahaya yang lebih rendah.",
+        ],
+      },
+      {
+        key: "deployment",
+        content: [
+          "Deployed with Neon Postgres as the shared hosted database for the Silver and Gold schemas, a local Airflow instance in Docker Compose running the weekly pipeline, and the Streamlit app itself hosted on Streamlit Community Cloud, split into Data Scientist and Data Analyst page groups.",
+        ],
+        contentId: [
+          "Dideploy dengan Neon Postgres sebagai database hosted bersama untuk schema Silver dan Gold, instance Airflow lokal via Docker Compose yang menjalankan pipeline mingguan, dan aplikasi Streamlit sendiri di-hosting di Streamlit Community Cloud, terbagi jadi grup halaman Data Scientist dan Data Analyst.",
+        ],
+      },
+    ],
+  },
 ];

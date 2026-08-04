@@ -84,7 +84,8 @@
       "modelEvaluation": "Evaluasi Model",
       "architecture": "Arsitektur",
       "deployment": "Deployment",
-      "impact": "Dampak"
+      "impact": "Dampak",
+      "aiAgent": "AI Agent"
     }
   },
   "blog": {

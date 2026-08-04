@@ -18,7 +18,8 @@ export type SectionKey =
   | "modelEvaluation"
   | "architecture"
   | "deployment"
-  | "impact";
+  | "impact"
+  |  "aiAgent";
 
 export interface ProjectSection {
   key: SectionKey;
