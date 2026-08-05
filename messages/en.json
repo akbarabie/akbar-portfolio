@@ -56,7 +56,8 @@
     "metaDescription": "A selection of data analytics, data science, and data engineering projects.",
     "viewOnGithub": "View on GitHub",
     "viewLiveDemo": "View Live Demo",
-    "categories": {
+    "closeVideo"  : "Close video",
+    "categories"  : {
       "data-analyst": "Data Analyst",
       "data-scientist": "Data Scientist",
       "data-engineer": "Data Engineer"

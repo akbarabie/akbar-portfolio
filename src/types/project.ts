@@ -54,3 +54,15 @@ export interface Project {
   sections: ProjectSection[];
   featured?: boolean;
 }
+
+export interface ProjectLinks {
+  github?: string;
+  liveDemo?: string;
+  demoVideo?: {
+    type: "file" | "youtube" | "vimeo";
+    // file: path relatif ke /public (mis. "/videos/retail-iq-demo.mp4")
+    // youtube: video ID aja (bukan full URL) — dari youtube.com/watch?v=INI_IDNYA
+    // vimeo: video ID aja
+    src: string;
+  };
+}

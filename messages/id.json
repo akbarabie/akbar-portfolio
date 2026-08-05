@@ -68,6 +68,7 @@
     "metaDescription": "Kumpulan proyek Data Analytics, Data Science, dan Data Engineering.",
     "viewOnGithub": "Lihat di GitHub",
     "viewLiveDemo": "Lihat Demo",
+    "closeVideo"  : "Tutup video",
     "categories": {
       "data-analyst": "Data Analyst",
       "data-scientist": "Data Scientist",

@@ -437,7 +437,10 @@ export const projects: Project[] = [
     ],
     links: {
       github: "https://github.com/akbarabie/retail-revenue-profit-pipeline",
-      // liveDemo sengaja di-omit, bukan diisi "#" — lihat catatan soal tombol mati di atas
+      demoVideo: {
+        type: "file",
+        src: "/videos/etl_process.mp4", // taruh file video kamu di public/videos/s
+      },
     },
     assets: {
       cover: "/images/projects/retail-analyst.png",

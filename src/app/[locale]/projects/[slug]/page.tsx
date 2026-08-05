@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ExternalLink } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
@@ -15,6 +14,7 @@ import { getLocalizedTagline, getLocalizedSectionContent } from "@/lib/localized
 import { projects } from "@/data/projects";
 import { routing } from "@/i18n/routing";
 import { buildLanguageAlternates } from "@/lib/seo";
+import { LiveDemoButton } from "@/components/ui/LiveDemoButton";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -79,14 +79,10 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </a>
               </Button>
             )}
-            {project.links.liveDemo && (
-              <Button asChild>
-                <a href={project.links.liveDemo} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="size-4" />
-                  {t("viewLiveDemo")}
-                </a>
-              </Button>
-            )}
+            <LiveDemoButton
+              links={project.links}
+              labels={{ viewLiveDemo: t("viewLiveDemo"), closeVideo: t("closeVideo") }}
+            />
           </div>
         </AnimatedSection>
 
