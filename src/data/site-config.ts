@@ -53,7 +53,7 @@ export const siteConfig = {
   ],
 
   social: {
-    email: "akbarsuharbi@gmail.com",
+    email: "akbarabi@mas-porto.my.id",
     whatsapp: "6285290830915",
     github: "https://github.com/akbarabie",
     linkedin: "https://www.linkedin.com/in/muhammad-akbar-suharbi-6955ba189/",
