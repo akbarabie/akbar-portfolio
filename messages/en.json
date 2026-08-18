@@ -49,6 +49,17 @@
     },
     "comingSoon": "Coming Soon"
   },
+  "certificates": {
+    "title": "Certificates & Credentials",
+    "subtitle": "Professional certifications validating hands-on expertise across data, capital markets, and cybersecurity.",
+    "issued": "Issued",
+    "credentialId": "Credential ID",
+    "viewLarger": "Click to view larger",
+    "close": "Close certificate preview",
+    "previous": "Previous certificate",
+    "next": "Next certificate",
+    "dragHint": "Swipe sideways or click a side certificate to view others."
+  },
   "projects": {
     "title": "Projects",
     "subtitle": "Real-world projects spanning Data Analytics, Machine Learning, AI Engineering, and Data Engineering.",

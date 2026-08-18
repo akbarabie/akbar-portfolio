@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { siteConfig } from "@/data/site-config";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
+import { Certificates } from "@/components/sections/Certificates";
 import { Timeline } from "@/components/sections/Timeline";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Contact } from "@/components/sections/Contact";
@@ -26,6 +27,9 @@ export default function Home() {
       </AnimatedSection>
       <AnimatedSection>
         <Skills />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Certificates />
       </AnimatedSection>
       <AnimatedSection>
         <Timeline />

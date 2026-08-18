@@ -61,6 +61,17 @@
     },
     "comingSoon": "Segera Hadir"
   },
+  "certificates": {
+    "title": "Sertifikat & Kredensial",
+    "subtitle": "Sertifikasi profesional yang membuktikan keahlian langsung di bidang data, pasar modal, dan keamanan siber.",
+    "issued": "Diterbitkan",
+    "credentialId": "ID Kredensial",
+    "viewLarger": "Klik untuk lihat lebih besar",
+    "close": "Tutup pratinjau sertifikat",
+    "previous": "Sertifikat sebelumnya",
+    "next": "Sertifikat berikutnya",
+    "dragHint": "Geser ke samping atau klik sertifikat di sisi kanan/kiri untuk melihat yang lain."
+  },
   "projects": {
     "title": "Proyek",
     "subtitle": "Proyek nyata yang mencakup Data Analytics, Machine Learning, AI Engineering, dan Data Engineering.",

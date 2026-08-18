@@ -184,6 +184,16 @@ body {
   box-shadow: 0 0 0 4px var(--color-background);
 }
 
+/* Certificate carousel — scroll tetap jalan (native drag/swipe/wheel),
+   scrollbar-nya aja yang disembunyiin biar keliatan modern. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Blog MDX content */
 /* Shiki nge-render code block sebagai <pre class="shiki">, ada <code> di
    dalamnya. <code> itu juga match komponen "inline code" kita di
