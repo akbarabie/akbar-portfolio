@@ -39,10 +39,19 @@ const rawCertificates: Certificate[] = [
     id: "kominfo-cybersecurity",
     name: "Cyber Security Analyst untuk Sektor Publik",
     issuer: "KOMINFO — Thematic Academy Digital Talent Scholarship",
-    category: "Sertifikat Pelatihan (60 Jam)",
+    category: "Sertifikat Pelatihan",
     issuedDate: "2021-09-01",
     credentialId: "05106073151-31/TA.DTS/BLSDM.KOMINFO/2021",
     image: "/images/certificates/kominfo-cybersecurity.jpg",
+  },
+  {
+    id: "kri-ristekdikti",
+    name: "Piagam Penghargaan Kontes Robot Indonesia Divisi Robot Sepak Bola Beroda",
+    issuer: "RISTEKDIKTI — Kontes Robot Indonesia",
+    category: "Piagam Penghargaan",
+    issuedDate: "2017-05-06",
+    credentialId: "1050/B3.1/KM/2017",
+    image: "/images/certificates/kri-ristekdikti.jpg",
   },
 ];
 
