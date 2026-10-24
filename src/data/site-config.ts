@@ -39,7 +39,7 @@ interface SiteConfig {
 export const siteConfig = {
   name: "Muhammad Akbar Suharbi",
   title: "Muhammad Akbar Suharbi | Data & AI Professional",
-  role: ["Data Analyst", "Data Scientist", "Data Engineer"],
+  role: ["AI Engineer", "Software Developer", "Data Engineer", "Data Scientist", "Data Analyst"],
   location: "Jakarta, Indonesia",
   siteUrl: "https://mas-porto.my.id", // TODO: ganti setelah deploy Vercel pertama
   tagline: "Transforming 7+ years of enterprise IT experience with modern Data Science and AI Engineering.",

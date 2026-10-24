@@ -9,13 +9,22 @@ import type { Certificate } from "@/types/certificate";
 
 const rawCertificates: Certificate[] = [
   {
-    id: "hackerrank-python-basic",
+    id: "python-basic",
     name: "Python (Basic)",
     issuer: "HackerRank",
     category: "Certificate of Accomplishment",
     issuedDate: "2026-08-10",
     credentialId: "C684307D2CE0",
     image: "/images/certificates/hackerrank-python-basic.jpg",
+  },
+  {
+    id: "sql-basic",
+    name: "SQL (Basic)",
+    issuer: "HackerRank",
+    category: "Certificate of Accomplishment",
+    issuedDate: "2026-09-15",
+    credentialId: "BD40F9B36293",
+    image: "/images/certificates/sql-certificate.jpg",
   },
   {
     id: "bnsp-wppe",
