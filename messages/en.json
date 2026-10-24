@@ -140,9 +140,9 @@
         "description": "Completed an bootcamp AI and Data Science program, gaining hands-on experience in machine learning, neural networks, and end-to-end data workflows."
       },
       "portfolio-now": {
-        "period": "2026 – Present",
-        "title": "Building in Public",
-        "description": "Building production-ready AI and data solutions focused on solving real-world business problems."
+        "period": "September 2026 – Present",
+        "title": "Data Engineer, PT Astra International Tbk",
+        "description": "Engineering end-to-end data pipelines across GCP, Airflow, Microsoft Azure and Fabric, SAP BW, SAP HANA, and SAP Data Services to deliver reliable data integration and actionable business insights."
       }
     }
   }

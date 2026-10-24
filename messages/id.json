@@ -152,9 +152,9 @@
         "description": "Menyelesaikan program bootcamp Data Science dan AI dengan pengalaman praktik langsung dalam machine learning, neural network, serta pengembangan solusi data end-to-end."
       },
       "portfolio-now": {
-        "period": "2026 – Sekarang",
-        "title": "Membangun Secara Terbuka",
-        "description": "Mengembangkan solusi AI dan data yang siap digunakan untuk membantu menyelesaikan permasalahan bisnis di dunia nyata."
+        "period": "September 2026 – Sekarang",
+        "title": "Data Engineer, PT Astra International Tbk",
+        "description": "Mengembangkan pipeline data end-to-end lintas GCP, Airflow, Microsoft Azure dan Fabric, SAP BW, SAP HANA, dan SAP Data Service untuk mendukung integrasi data yang andal serta menghasilkan insight bisnis yang bernilai."
       }
     }
   }
